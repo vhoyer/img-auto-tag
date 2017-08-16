@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Img auto-tag</title>
+	<style>
+body{
+	margin:0;
+	padding:1em;
+}
+input,textarea,button{
+	margin:.3em;
+}
+input{
+	width:80%;
+}
+#text{
+	max-width:99%;
+	min-width:99%;
+	height:60vh;
+	margin-bottom:0;
+}
+	</style>
+</head>
+<body>
+	<input type='text' placeholder='title' id='title' />
+	<br />
+	<input type='text' placeholder='alt' id='alt' />
+	<button id='submit'>submit</button>
+	<br />
+	<textarea id='text'></textarea>
+
+	<script type='text/javascript'>
+function $(search){
+	let first = search.substr(0,1);
+	if (first == '#') {
+		return document.getElementById(search.substring(1));
+	}
+	throw null;
+}
+$('#submit').addEventListener('click', function(){
+	let alt = $('#alt').value;
+	let title = $('#title').value;
+	var text = $('#text').value;
+
+	text.replace(' src="','title="'+title+'" src="');
+	text.replace('alt=""','alt="'+alt+'"');
+
+	$('#text').value = text;
+});
+	</script>
+</body>
+</html>
