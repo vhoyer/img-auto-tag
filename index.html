@@ -4,11 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Img auto-tag</title>
 	<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body{
+	font-family: 'Open Sans', sans-serif;
 	margin:0;
 	padding:1em;
 }
 input,textarea,button{
+	font-size:1.2em;
 	margin:.3em;
 }
 input{
@@ -23,11 +26,14 @@ input{
 	</style>
 </head>
 <body>
+	<label for='title'>Aqui vem o title:</label><br />
 	<input type='text' placeholder='title' id='title' />
 	<br />
+	<label for='alt'>Aqui vem o alt:</label><br />
 	<input type='text' placeholder='alt' id='alt' />
 	<button id='submit'>submit</button>
 	<br />
+	<label for='text'>Nessa caixa de texto, você cola o texto do WordPress, depois aperta o botão 'submit'. O site vai adicionar os parâmetros necessários, então é só copiar dessa caixa de texto, e colar no WordPress da onde você tirou. Se ainda tiver dúvidas, <a href='help.html'>acesse nossa página de ajuda</a>.</label>
 	<textarea id='text'></textarea>
 
 	<script type='text/javascript'>
