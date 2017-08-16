@@ -43,8 +43,8 @@ $('#submit').addEventListener('click', function(){
 	let title = $('#title').value;
 	var text = $('#text').value;
 
-	text.replace(' src="','title="'+title+'" src="');
-	text.replace('alt=""','alt="'+alt+'"');
+	text = text.replace(/ src="/,' title="'+title+'" src="');
+	text = text.replace(/alt=""/,'alt="'+alt+'"');
 
 	$('#text').value = text;
 });
