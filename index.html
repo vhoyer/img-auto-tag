@@ -44,13 +44,17 @@ function $(search){
 	}
 	throw null;
 }
+String.prototype.replaceAll = function(search, replacement) {
+	var target = this;
+	return target.replace(new RegExp(search, 'g'), replacement);
+};
 $('#submit').addEventListener('click', function(){
 	let alt = $('#alt').value;
 	let title = $('#title').value;
 	var text = $('#text').value;
 
-	text = text.replace(/ src="/,' title="'+title+'" src="');
-	text = text.replace(/alt=""/,'alt="'+alt+'"');
+	text = text.replaceAll(' src="',' title="'+title+'" src="');
+	text = text.replaceAll('alt=""','alt="'+alt+'"');
 
 	$('#text').value = text;
 });
