@@ -17,9 +17,9 @@ input,textarea,button{
 input{
 	width:80%;
 }
-#text{
-	max-width:99%;
-	min-width:99%;
+textarea{
+	max-width:47%;
+	min-width:47%;
 	height:60vh;
 	margin-bottom:0;
 }
@@ -33,7 +33,8 @@ input{
 	<input type='text' placeholder='alt' id='alt' />
 	<button id='submit'>submit</button>
 	<br />
-	<label for='text'>Nessa caixa de texto, você cola o texto do WordPress, depois aperta o botão 'submit'. O site vai adicionar os parâmetros necessários, então é só copiar dessa caixa de texto, e colar no WordPress da onde você tirou. Se ainda tiver dúvidas, <a href='help.html'>acesse nossa página de ajuda</a>.</label>
+	<label for='text'>Na caixa de texto a esquerda, você cola o texto do WordPress, depois aperta o botão 'submit'. O site vai adicionar os parâmetros necessários, então é só copiar caixa de texto a esquerda, e colar no WordPress da onde você tirou. Caso algo de errado aconteça, o texto na esquerda permaneceu inalterado Se ainda tiver dúvidas, <a href='help.html'>acesse nossa página de ajuda</a>.</label><br />
+	<textarea id='text-origin'></textarea>
 	<textarea id='text'></textarea>
 
 	<script type='text/javascript'>
@@ -51,7 +52,7 @@ String.prototype.replaceAll = function(search, replacement) {
 $('#submit').addEventListener('click', function(){
 	let alt = $('#alt').value;
 	let title = $('#title').value;
-	var text = $('#text').value;
+	var text = $('#text-origin').value;
 
 	text = text.replaceAll(' src="',' title="'+title+'" src="');
 	text = text.replaceAll('alt=""','alt="'+alt+'"');
