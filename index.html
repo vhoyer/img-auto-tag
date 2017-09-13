@@ -1,64 +1,166 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" />
+	<link href='style.css' rel='stylesheet' />
 	<title>Img auto-tag</title>
-	<style>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-body{
-	font-family: 'Open Sans', sans-serif;
-	margin:0;
-	padding:1em;
-}
-input,textarea,button{
-	font-size:1.2em;
-	margin:.3em;
-}
-input{
-	width:80%;
-}
-textarea{
-	max-width:47%;
-	min-width:47%;
-	height:60vh;
-	margin-bottom:0;
-}
-	</style>
 </head>
 <body>
-	<label for='title'>Aqui vem o title:</label><br />
-	<input type='text' placeholder='title' id='title' />
-	<br />
-	<label for='alt'>Aqui vem o alt:</label><br />
-	<input type='text' placeholder='alt' id='alt' />
-	<button id='submit'>submit</button>
-	<br />
-	<label for='text'>Na caixa de texto a esquerda, você cola o texto do WordPress, depois aperta o botão 'submit'. O site vai adicionar os parâmetros necessários, então é só copiar caixa de texto a esquerda, e colar no WordPress da onde você tirou. Caso algo de errado aconteça, o texto na esquerda permaneceu inalterado Se ainda tiver dúvidas, <a href='help.html'>acesse nossa página de ajuda</a>.</label><br />
-	<textarea id='text-origin'></textarea>
-	<textarea id='text'></textarea>
+	<nav>
+		<div class='nav-left'>
+			<h1><span class='html-tag'>&lt;</span>img<span class='html-tag'>/&gt;</span> Auto-tagging</h1>
+		</div>
+		<ul class='nav-right'>
+			<a href="help.html"><li>Ajuda</li></a>
+		</ul>
+	</nav>
 
-	<script type='text/javascript'>
-function $(search){
-	let first = search.substr(0,1);
-	if (first == '#') {
-		return document.getElementById(search.substring(1));
-	}
-	throw null;
-}
-String.prototype.replaceAll = function(search, replacement) {
-	var target = this;
-	return target.replace(new RegExp(search, 'g'), replacement);
-};
-$('#submit').addEventListener('click', function(){
-	let alt = $('#alt').value;
-	let title = $('#title').value;
-	var text = $('#text-origin').value;
+	<div class='clear'></div>
 
-	text = text.replaceAll(' src="',' title="'+title+'" src="');
-	text = text.replaceAll('alt=""','alt="'+alt+'"');
+	<div class='container'>
 
-	$('#text').value = text;
-});
-	</script>
+		<div class='panel'>
+			<div class='slider' data-showing-step="0">
+				<div id="step1" class="step"><!--{{{-->
+					<h2 class='title'>Original Text</h2>
+
+					<div class='content'>
+						<textarea id='text-origin' class='full'></textarea>
+					</div>
+
+					<div class='btn-group'>
+						<button id="showProcessed" class='btn'>Show Processed</button>
+						<button class='next btn'>Next</button>
+					</div>
+				</div><!--}}}-->
+
+				<div id='step2' class='step'><!--{{{-->
+					<h2 class='title'>Image Details</h2>
+
+					<div class='content'>
+						<section><!--{{{-->
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='cap'>Caption</label>
+								</div>
+								<div class='col-9'>
+									<textarea id='cap' class='full' disabled=""></textarea>
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='alt'>Alternative text</label>
+								</div>
+								<div class='col-9'>
+									<input id='alt' class='full' type='text' />
+								</div>
+							</div>
+						</section><!--}}}-->
+						<hr />
+						<section><!--{{{-->
+							<h3>Display Settings</h3>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='radios'>Align</label>
+								</div>
+								<div class='col-9'>
+									<div id='radios' class='radbtn-group'>
+										<input type="radio" name="radAlign" disabled="">
+										<input type="radio" name="radAlign" disabled="">
+										<input type="radio" name="radAlign" disabled="">
+										<input type="radio" name="radAlign" disabled="">
+									</div>
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='combo'>Link To</label>
+								</div>
+								<div class='col-9'>
+									<input id='combo' type='text' disabled="" />
+								</div>
+							</div>
+						</section><!--}}}-->
+						<hr />
+						<section><!--{{{-->
+							<h3>Advanced Options</h3>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='title'>Image Title Attribute</label>
+								</div>
+								<div class='col-9'>
+									<input id='title' class='full' type='text' />
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='css'>Image CSS Class</label>
+								</div>
+								<div class='col-9'>
+									<input id='css' class='full' type='text' disabled="" />
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-9 push-3'>
+									<input id='check' type='checkbox' disabled="" />
+									<label for='check'>Alternative text</label>
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='rel'>Link Rel</label>
+								</div>
+								<div class='col-9'>
+									<input id='rel' class='full' type='text' disabled="" />
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='cssLink'>Alternative text</label>
+								</div>
+								<div class='col-9'>
+									<input id='cssLink' class='full' type='text' disabled="" />
+								</div>
+							</div>
+						</section><!--}}}-->
+					</div>
+
+					<div class='btn-group'>
+						<p>The disabled fields are not available yet.</p>
+						<button class='prev btn'>Previous</button>
+						<button id='submit' class='next btn'>Next</button>
+					</div>
+				</div><!--}}}-->
+
+				<div id="step3" class="step"><!--{{{-->
+					<h2 class='title'>Processed Text</h2>
+
+					<div class='content'>
+						<textarea id="text" class='full'></textarea>
+					</div>
+
+					<div class='btn-group'>
+						<p>Did something went wrong? Don't panic, click this button on the left.</p>
+						<button id='showOrigin' class='btn'>Show Original</button>
+						<button class='prev btn'>Previous</button>
+					</div>
+				</div><!--}}}-->
+			</div>
+		</div>
+
+	</div>
+
+	<script type='text/javascript' src='js/framework.js'></script>
+	<script type='text/javascript' src='js/main.js'></script>
 </body>
 </html>
