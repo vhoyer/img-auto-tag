@@ -18,6 +18,8 @@ $('#submit').addEventListener('click', function(){
 
 	$('#text').value = text;
 	$('#text').select();
+	document.execCommand('copy');
+
 	$('#showProcessed').style.visibility = "visible";
 });
 
