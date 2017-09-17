@@ -17,6 +17,7 @@ $('#submit').addEventListener('click', function(){
 	text = text.replaceAll(' src="',' alt="'+alt+'" src="');
 
 	$('#text').value = text;
+	$('#text').select();
 	$('#showProcessed').style.visibility = "visible";
 });
 
