@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" />
+	<link href='style.css' rel='stylesheet' />
+	<title>Img auto-tag</title>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#124559">
+	<meta name="apple-mobile-web-app-title" content="Img Auto-tagging">
+	<meta name="application-name" content="Img Auto-tagging">
+	<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+	<nav>
+		<div class='nav-left'>
+			<a href="index.html"><h1><span class='html-tag'>&lt;</span>img<span class='html-tag'>/&gt;</span> Auto-tagging</h1></a>
+		</div>
+		<ul class='nav-right'>
+			<a href="help.html"><li>Help</li></a>
+		</ul>
+	</nav>
+
+	<div class='clear'></div>
+
+	<div class='container'>
+
+		<div class='panel'>
+			<div class='slider' data-showing-step="0">
+				<div id="step0" class="step"><!--{{{-->
+					<h2 class='title'>Preparation</h2>
+
+					<div class='content'>
+						<textarea id='text-origin' class='full'></textarea>
+					</div>
+
+					<div class='btn-group'>
+						<button class='next btn'>Next</button>
+					</div>
+				</div><!--}}}-->
+
+				<div id="step1" class="step"><!--{{{-->
+					<h2 class='title'>Original Text</h2>
+
+					<div class='content'>
+						<textarea id='text-origin' class='full'></textarea>
+					</div>
+
+					<div class='btn-group'>
+						<button class='prev btn'>Previous</button>
+						<button class='next btn'>Next</button>
+					</div>
+				</div><!--}}}-->
+
+				<div id='step2' class='step'><!--{{{-->
+					<h2 class='title'>Image Details</h2>
+
+					<div class='content'>
+						<section><!--{{{-->
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='cap'>Caption</label>
+								</div>
+								<div class='col-9'>
+									<textarea id='cap' class='full' disabled=""></textarea>
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='alt'>Alternative text</label>
+								</div>
+								<div class='col-9'>
+									<input id='alt' class='full' type='text' />
+								</div>
+							</div>
+						</section><!--}}}-->
+						<hr />
+						<section><!--{{{-->
+							<h3>Display Settings</h3>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='radios'>Align</label>
+								</div>
+								<div class='col-9'>
+									<div id='radios' class='radbtn-group'>
+										<input type="radio" name="radAlign" disabled="">
+										<input type="radio" name="radAlign" disabled="">
+										<input type="radio" name="radAlign" disabled="">
+										<input type="radio" name="radAlign" disabled="">
+									</div>
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='combo'>Link To</label>
+								</div>
+								<div class='col-9'>
+									<input id='combo' type='text' disabled="" />
+								</div>
+							</div>
+						</section><!--}}}-->
+						<hr />
+						<section><!--{{{-->
+							<h3>Advanced Options</h3>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='title'>Image Title Attribute</label>
+								</div>
+								<div class='col-9'>
+									<input id='title' class='full' type='text' />
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='css'>Image CSS Class</label>
+								</div>
+								<div class='col-9'>
+									<input id='css' class='full' type='text' disabled="" />
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-9 push-3'>
+									<input id='check' type='checkbox' disabled="" />
+									<label for='check'>Alternative text</label>
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='rel'>Link Rel</label>
+								</div>
+								<div class='col-9'>
+									<input id='rel' class='full' type='text' disabled="" />
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='col-3 text-right'>
+									<label for='cssLink'>Alternative text</label>
+								</div>
+								<div class='col-9'>
+									<input id='cssLink' class='full' type='text' disabled="" />
+								</div>
+							</div>
+						</section><!--}}}-->
+					</div>
+
+					<div class='btn-group'>
+						<button class='prev btn'>Previous</button>
+						<button class='next btn'>Next</button>
+					</div>
+				</div><!--}}}-->
+
+				<div id="step3" class="step"><!--{{{-->
+					<h2 class='title'>Processed Text</h2>
+
+					<div class='content'>
+						<textarea id="text" class='full' readonly=""></textarea>
+					</div>
+
+					<div class='btn-group'>
+						<p>Did something went wrong? Don't panic, click this button on the left.</p>
+						<button id='showOrigin' class='btn'>Show Original</button>
+						<button class='prev btn'>Previous</button>
+					</div>
+				</div><!--}}}-->
+
+				<div id="step4" class="step"><!--{{{-->
+					<h2 class='title'>Processed Text</h2>
+
+					<div class='content'>
+						<textarea id="text" class='full' readonly=""></textarea>
+					</div>
+
+					<div class='btn-group'>
+						<p>Did something went wrong? Don't panic, click this button on the left.</p>
+						<button id='showOrigin' class='btn'>Show Original</button>
+						<button class='prev btn'>Previous</button>
+					</div>
+				</div><!--}}}-->
+			</div>
+		</div>
+	</div>
+
+	<script type='text/javascript' src='js/framework.js'></script>
+	<script type='text/javascript' src='js/main.js'></script>
+</body>
+</html>

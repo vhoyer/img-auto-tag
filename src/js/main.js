@@ -1,28 +1,5 @@
 const numberOfSteps = 3;
 
-function removePreviousTags(text){
-	text = text.replaceAll(/ alt="[^"]*"/,'');
-	text = text.replaceAll(/ title="[^"]*"/,'');
-	return text;
-}
-
-$('#submit').addEventListener('click', function(){
-	let alt = $('#alt').value;
-	let title = $('#title').value;
-	var text = $('#text-origin').value;
-
-	text = removePreviousTags(text);
-
-	text = text.replaceAll(' src="',' title="'+title+'" src="');
-	text = text.replaceAll(' src="',' alt="'+alt+'" src="');
-
-	$('#text').value = text;
-	$('#text').select();
-	document.execCommand('copy');
-
-	$('#showProcessed').style.visibility = "visible";
-});
-
 //Panel movement {{{
 function movePanel(step){
 	const slider = $('.slider')[0];
@@ -53,7 +30,35 @@ for (var i = 0; i < prevs.length; i++) {
 }
 $("#showProcessed").addEventListener('click', function(){
 	moveTo(numberOfSteps-1);
+	$('#text').select();
 });
 $("#showOrigin").addEventListener('click', function(){
 	moveTo(0);
+	$('#text-origin').select();
 });//}}}
+
+function removePreviousTags(text){
+	text = text.replaceAll(/ alt="[^"]*"/,'');
+	text = text.replaceAll(/ title="[^"]*"/,'');
+	return text;
+}
+
+const submit = $('#submit');
+if (submit) {
+	submit.addEventListener('click', function(){
+		let alt = $('#alt').value;
+		let title = $('#title').value;
+		var text = $('#text-origin').value;
+
+		text = removePreviousTags(text);
+
+		text = text.replaceAll(' src="',' title="'+title+'" src="');
+		text = text.replaceAll(' src="',' alt="'+alt+'" src="');
+
+		$('#text').value = text;
+		$('#text').select();
+		document.execCommand('copy');
+
+		$('#showProcessed').style.visibility = "visible";
+	});
+}

@@ -1,4 +1,4 @@
-files = js style.css index.html help.html
+files = $(wildcard src/*)
 
 deploy:
 	cp -rt public/ $(files)
